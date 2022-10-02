@@ -1,31 +1,50 @@
-const render = document.querySelector('[data-action="render"]');
+const input = document.querySelector("#controls input");
+const boxes = document.getElementById("boxes");
+const create = document.querySelector('[data-action="create"]');
 const destroy = document.querySelector('[data-action="destroy"]');
-const boxes = document.getElementById('boxes');
 
-render.addEventListener('click', getAmount);
-destroy.addEventListener('click', destroyBoxes);
 
-function getAmount() {
-  const amount = +document.querySelector('#controls input').value;
+
+const inputChange = (e) => {
+input.setAttribute("count", Number(e.currentTarget.value));
+console.log(Number(e.currentTarget.value));
+};
+input.addEventListener("input", inputChange);
+
+
+function getAmount(){
+  const input = document.querySelector("#controls input").value;
   createBoxes(amount);
-}
+};
 
 function createBoxes(amount) {
-  let basicSize = 30;
-  const fragment = document.createDocumentFragment();
-  for (let i = 0; i < amount; i +=) {
-    const size = basicSize + i * 10;
-    const div = document.createElement('div');
-    div.style.cssText = `width: ${size}px; height: ${size}px; background-color: rgba( ${[getRandomHexColor()]} , ${[getRandomHexColor()]} , ${[getRandomHexColor()]} )`;
-    fragment.appendChild(div);
+  let boxSize = 30;
+  for (let i = 1; i < amount; i += 1) {
+    let size = boxSize + i * 10;
+    const box = document.createElement("div");
+    box.style.background = [getRandomHexColor()];
+    box.style.height = size + "px";
+    box.style.width = size + "px";
+    box.style.margin = "10px";
+    box.classList.add("new-box");
+    boxes.append(box);
   }
-  boxes.appendChild(fragment);
-}
 
-function destroyBoxes() {
-  boxes.innerHTML = ' ';
-}
+};
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
+};
+
+
+function destroyBoxes() {
+  while (boxes.firstChild) {
+   boxes.removeChild(boxes.lastChild);
 }
+};
+destroy.addEventListener("click", destroyBoxes);
+
+create.addEventListener("click", getAmount);
+
+
+

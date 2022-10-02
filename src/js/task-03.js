@@ -13,8 +13,9 @@ const images = [
   },
 ];
 
-const galleryEl = document.querySelector(`.gallery`);
-console.log(galleryEl);
+const galleryEl = document.querySelector('.gallery');
+galleryEl.classList.add("list", "flex");
+
 const markup = images.map(image => {
   return `<li class="gallery-list"><img class="gallery-img" src="${image.url}" alt="${image.alt}"/></li>`;
 }).join(``);
