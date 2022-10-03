@@ -1,7 +1,7 @@
 const input = document.querySelector("#controls input");
 const boxes = document.getElementById("boxes");
-const create = document.querySelector('[data-action="create"]');
-const destroy = document.querySelector('[data-action="destroy"]');
+const create = document.querySelector('[data-create]');
+const destroy = document.querySelector('[data-destroy]');
 
 
 
@@ -15,18 +15,13 @@ input.addEventListener("input", inputChange);
 
 
 function getAmount(){
-  const input = document.querySelector("#controls input").value;
-  createBoxes(amount);
-
+  createBoxes(input.value);
 };
-
-
-
 
 function createBoxes(amount) {
   let boxSize = 30;
   const elements = [];
-  for (let i = 1; i < amount; i += 1) {
+  for (let i = 1; i <= amount; i += 1) {
     let size = boxSize + i * 10;
     const box = document.createElement("div");
 
@@ -40,7 +35,7 @@ function createBoxes(amount) {
   }
   
   boxes.append(...elements);
-    return elements;
+    
 };
 
   
