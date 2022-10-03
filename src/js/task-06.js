@@ -13,5 +13,3 @@ const text = e.target.value;
     inputEl.classList.add('invalid');
   }
 });
-
-

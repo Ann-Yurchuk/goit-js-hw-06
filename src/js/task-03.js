@@ -22,6 +22,3 @@ const markup = images.map(image => {
 console.log(markup);
 
 galleryEl.insertAdjacentHTML(`beforeend`, markup);
-
-
-
