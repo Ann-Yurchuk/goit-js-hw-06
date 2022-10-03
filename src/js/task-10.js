@@ -22,7 +22,7 @@ function createBoxes(amount) {
   for (let i = 1; i < amount; i += 1) {
     let size = boxSize + i * 10;
     const box = document.createElement("div");
-    box.style.background = [getRandomHexColor()];
+    box.style.background = getRandomHexColor();
     box.style.height = size + "px";
     box.style.width = size + "px";
     box.style.margin = "10px";
@@ -42,6 +42,7 @@ function destroyBoxes() {
    boxes.removeChild(boxes.lastChild);
 }
 };
+
 destroy.addEventListener("click", destroyBoxes);
 
 create.addEventListener("click", getAmount);

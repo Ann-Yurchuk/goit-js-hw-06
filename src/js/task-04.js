@@ -1,21 +1,18 @@
-let valueEl = Number(document.querySelector('#value').textContent);
+const decrBtn = document.querySelectorAll('button')[0];
+const incrBtn = document.querySelectorAll('button')[1];
 
-let counterValue = document.querySelector('#value');
+let counterValue = 0;
 
-const decrBtn = document.querySelector('#counter').firstElementChild;
-const incrBtn = document.querySelector('#counter').lastElementChild;
+ decrBtn.addEventListener('click', event => {
+  counterValue -= 1;
+   const valueEl = document.querySelector('#value');
+   valueEl.textContent = counterValue;
+   console.log(counterValue);
+ });
 
 incrBtn.addEventListener('click', event => {
-  console.log("Вішаю слухача події на цільову кнопку");
-  valueEl += 1;
-
-  counterValue.innerText = valueEl;
-});
-
-decrBtn.addEventListener('click', event => {
-  console.log("Знімаю слухача події з цільової кнопки");
-  valueEl -= 1;
-
-  counterValue.innerText = valueEl;
-  console.log("counterValue", counterValue);
+  counterValue += 1;
+  const valueEl = document.querySelector('#value');
+  valueEl.textContent = counterValue;
+  console.log(counterValue);
 });
